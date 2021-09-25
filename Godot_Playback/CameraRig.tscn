@@ -1,0 +1,165 @@
+[gd_scene load_steps=18 format=2]
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_color = Color( 0.764706, 0.764706, 0.764706, 1 )
+metallic = 0.5
+roughness = 0.5
+
+[sub_resource type="CubeMesh" id=2]
+material = SubResource( 1 )
+size = Vector3( 2, 0.035, 0.035 )
+
+[sub_resource type="SpatialMaterial" id=3]
+albedo_color = Color( 0.188235, 0.188235, 0.188235, 1 )
+
+[sub_resource type="CubeMesh" id=4]
+material = SubResource( 3 )
+size = Vector3( 0.36, 0.024, 0.24 )
+
+[sub_resource type="SpatialMaterial" id=5]
+albedo_color = Color( 0.188235, 0.188235, 0.188235, 1 )
+
+[sub_resource type="CubeMesh" id=6]
+material = SubResource( 5 )
+size = Vector3( 0.35, 0.006, 0.24 )
+
+[sub_resource type="SphereMesh" id=7]
+radius = 0.1
+height = 0.05
+radial_segments = 8
+rings = 8
+
+[sub_resource type="SpatialMaterial" id=8]
+albedo_color = Color( 0.764706, 0.764706, 0.764706, 1 )
+metallic = 0.5
+roughness = 0.5
+
+[sub_resource type="CubeMesh" id=9]
+material = SubResource( 8 )
+size = Vector3( 0.02, 0.003, 0.03 )
+
+[sub_resource type="SpatialMaterial" id=10]
+albedo_color = Color( 0.764706, 0.764706, 0.764706, 1 )
+metallic = 0.62
+roughness = 0.21
+
+[sub_resource type="CylinderMesh" id=11]
+material = SubResource( 10 )
+top_radius = 0.005
+bottom_radius = 0.005
+height = 0.005
+radial_segments = 6
+rings = 1
+
+[sub_resource type="SpatialMaterial" id=12]
+albedo_color = Color( 0.764706, 0.764706, 0.764706, 1 )
+metallic = 0.5
+roughness = 0.5
+
+[sub_resource type="CubeMesh" id=13]
+material = SubResource( 12 )
+size = Vector3( 0.02, 0.003, 0.05 )
+
+[sub_resource type="SpatialMaterial" id=14]
+albedo_color = Color( 0.164706, 0.133333, 0.133333, 1 )
+
+[sub_resource type="CubeMesh" id=15]
+material = SubResource( 14 )
+size = Vector3( 0.1, 0.06, 0.02 )
+
+[sub_resource type="SpatialMaterial" id=16]
+albedo_color = Color( 0.45098, 0.294118, 0.294118, 1 )
+
+[sub_resource type="CylinderMesh" id=17]
+material = SubResource( 16 )
+top_radius = 0.02
+bottom_radius = 0.02
+height = 0.04
+radial_segments = 16
+rings = 1
+
+[node name="CameraRig" type="Spatial"]
+
+[node name="CrossBar" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.018, 0 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="BackBarLeft" type="MeshInstance" parent="."]
+transform = Transform( -0.207912, 0, 0.978148, 0, 1, 0, -0.978148, 0, -0.207912, -0.2, -0.053, 0.95 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="BackBarRight" type="MeshInstance" parent="."]
+transform = Transform( -0.207912, 0, -0.978148, 0, 1, 0, 0.978148, 0, -0.207912, 0.2, -0.053, 0.95 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="Laptop" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.984711, -0.174198, 0, 0.174198, 0.984711, -0.384449, -0.0111302, 0.103462 )
+visible = false
+
+[node name="Keyboard" type="MeshInstance" parent="Laptop"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.012, 0 )
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="Lid" type="Spatial" parent="Laptop"]
+transform = Transform( 1, 0, 0, 0, -0.438371, 0.898794, 0, -0.898794, -0.438371, 0, 0.03, -0.115 )
+
+[node name="Display" type="MeshInstance" parent="Laptop/Lid"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.115 )
+mesh = SubResource( 6 )
+material/0 = null
+
+[node name="Antenna_A" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.98, 0.054, 0 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="Antenna_B" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.98, 0.054, 0 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="Antenna_C" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.019, 1.9 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="CameraBase" type="Spatial" parent="."]
+transform = Transform( 0.984808, 0, 0.173648, 0, 1, 0, -0.173648, 0, 0.984808, 0, 0, 0 )
+
+[node name="MountingSlat" type="MeshInstance" parent="CameraBase"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.001, 0 )
+mesh = SubResource( 9 )
+material/0 = null
+
+[node name="Nut" type="MeshInstance" parent="CameraBase"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.005, 0 )
+mesh = SubResource( 11 )
+material/0 = null
+
+[node name="ExtensionSlat" type="MeshInstance" parent="CameraBase"]
+transform = Transform( 1.17685, 0.0427873, 0.0200575, -0.0461445, 1.14826, 0.258034, -0.0101803, -0.258611, 1.14901, 0.0010291, 0.00653509, 0.0396158 )
+mesh = SubResource( 13 )
+material/0 = null
+
+[node name="Camera" type="Spatial" parent="."]
+transform = Transform( 0.999999, 0, 0, 0, 0.999777, 0.021082, 0, -0.021082, 0.999777, 0.0130562, 0.00785021, 0.035197 )
+
+[node name="CameraBody" type="MeshInstance" parent="Camera"]
+transform = Transform( 0.999702, -0.0004264, 0.0244284, 0, 0.999848, 0.0174524, -0.0244322, -0.0174472, 0.999549, -0.007, 0.03, 0 )
+mesh = SubResource( 15 )
+material/0 = null
+
+[node name="Lens" type="MeshInstance" parent="Camera/CameraBody"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, -0.006, -0.002, -0.013 )
+mesh = SubResource( 17 )
+material/0 = null
+
+[node name="RigCamera" type="Camera" parent="Camera/CameraBody/Lens"]
+transform = Transform( 1, 7.33417e-09, -5.89062e-08, -4.65661e-10, -1.78814e-07, -1, 5.82077e-11, 1, -1.3411e-07, 0, 0.009, 0 )
+fov = 42.0
+near = 0.02
+far = 1000.0

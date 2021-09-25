@@ -1,0 +1,9 @@
+META	HEADER	GNSS location/orientation script
+META	VERSION	1.0.1
+META	FORMAT	ASCII
+META	CONTENT	DEFAULT
+META	TIMESTAMPS	UPTIME
+META	END
+Uptime	Origin_X	Origin_Y	Origin_Z	Basis_XX	Basis_XY	Basis_XZ	Basis_YX	Basis_YY	Basis_YZ	Basis_ZX	Basis_ZY	Basis_ZZ
+1	0	-30000	0	1	0	0	0	1	0	0	0	1
+100000000	0	-30000	0	1	0	0	0	1	0	0	0	1

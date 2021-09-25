@@ -1,0 +1,9 @@
+META	HEADER	GNSS location/orientation script
+META	VERSION	1.0.1
+META	FORMAT	ASCII
+META	CONTENT	DEFAULT
+META	TIMESTAMPS	UPTIME
+META	END
+Uptime	Origin_X	Origin_Y	Origin_Z	Basis_XX	Basis_XY	Basis_XZ	Basis_YX	Basis_YY	Basis_YZ	Basis_ZX	Basis_ZY	Basis_ZZ
+77898694	-14.0652	-9.4341	-61.6676	0.960153	0.050278	0.274916	0.014740	0.973205	-0.229466	-0.279087	0.224374	0.933684
+// Staying still staring at the rock
