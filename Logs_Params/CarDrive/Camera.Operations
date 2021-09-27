@@ -1,0 +1,36 @@
+// NOTE: If you want to generate LOSCripts for the rig (and a car attached to it's coordinates)
+// you need to clear all operations here. These are for a camera attached to the rig.
+
+// Camera transforms (short mount, 15.07.2021):
+
+// First calculate coordinates for the "camera eye" (viewing reference point / origin)
+// relative to the camera's mounting point
+
+// Lens is 13 mm to the left of the mounting point of the camera ("to west")
+translate 0 -0.013 0;
+
+// Height of the center of the lens (29 mm)
+translate 0 0 -0.029;
+
+// There's about 1 mm washer under the camera:
+translate 0 0 -0.001;
+
+// Estimated viewing reference point is 32 mm to front from the mounting point. This really just a wild quess
+translate 0.032 0 0;
+
+// Calibration:
+rotate yaw 2.2 deg;	// was 2.0
+rotate roll -1.8 deg;	// was -2.0
+
+// The bent slat (see below) was actually slightly angled in up/down-axis
+// No need to use angles here, but just slide it to the right
+translate 0 0.013 0;	// Lens was actually quite close to the centerpoint, so this is the same value as found above
+
+// Straight part of the slat (20 mm):
+translate -0.02 0 0;
+
+// Attachment slat is bent downwards (in camera's perspective) 2/3-way
+rotate pitch -11.5 deg;
+
+// Straight part attached to the tube (10 mm)
+translate -0.01 0 0;
