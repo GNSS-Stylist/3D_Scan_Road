@@ -70,22 +70,25 @@ var koolnessKeyActivated = false
 # dataset here mean one set of start/end replaytimes and associated camera- and 
 # object location/orientation scripts (= *.LOScript-files generated with 
 # GNSS-Stylus-application). These can be changed with UI's "Dataset"-OptionButton.
+# Note: Camera attached to the scanning rig doesn't have a separate LOScript here,
+# but it is attached to the scanning rig in Godot-project instead
 var datasets = [
 	# [Name, Start replaytime, End replaytime, Object LOScript, Start replaytime of camera script, Camera LOScript, Camera platform LOScript ]
-	["Video overlay", 4362000 - 10000, 5224428, "res://GNSS_Stylus_Scripts/RoadScan.LOScript", 656433, "res://GNSS_Stylus_Scripts/Walk3.LOScript", "res://GNSS_Stylus_Scripts/OutOfSight30kmUp.LOScript"],
-	["Walk 1", 4362000 - 5000, 5224428, "res://GNSS_Stylus_Scripts/RoadScan.LOScript", 476196, "res://GNSS_Stylus_Scripts/Walk1.LOScript", "res://GNSS_Stylus_Scripts/OutOfSight30kmUp.LOScript"],
+	["Video overlay", 4362000 - 10000, 5224428, "res://GNSS_Stylus_Scripts/RoadScan.LOScript", 656433, "res://GNSS_Stylus_Scripts/Walk3.LOScript", "res://GNSS_Stylus_Scripts/OutOfSight3kmUp.LOScript"],
+	["Walk 1", 4362000 - 5000, 5224428, "res://GNSS_Stylus_Scripts/RoadScan.LOScript", 476196, "res://GNSS_Stylus_Scripts/Walk1.LOScript", "res://GNSS_Stylus_Scripts/OutOfSight3kmUp.LOScript"],
 
 	# Chasing with the car:
 	["Car chase", 4476000, 5224428, "res://GNSS_Stylus_Scripts/RoadScan.LOScript", 77818000 - 35000 + 1694 + 4476000 - 4362000, "res://GNSS_Stylus_Scripts/CarCam_StartingFromTheRock.LOScript", "res://GNSS_Stylus_Scripts/CarRig_StartingFromTheRock.LOScript"],
+	["Car driving back", 4362000, 78605936 - 78388000 + 4362000, "res://GNSS_Stylus_Scripts/RoadScan.LOScript", 78388000, "res://GNSS_Stylus_Scripts/CarCam_DrivingBack.LOScript", "res://GNSS_Stylus_Scripts/CarRig_DrivingBack.LOScript"],
 	#["Staring at the rock", 4362000, 5224428, "res://GNSS_Stylus_Scripts/RoadScan.LOScript", 77818000, "res://GNSS_Stylus_Scripts/CarCam_StaringAtTheRock.LOScript", "res://GNSS_Stylus_Scripts/CarRig_StaringAtTheRock.LOScript"],
 
 	# Lidar calibration (stationary camera as time values will never be "in range".
 	# there is no sensible "camera track" for calibration).
-	["Lidar calibration", 3950000, 4070000, "res://GNSS_Stylus_Scripts/Calib.LOScript", 0, "res://GNSS_Stylus_Scripts/Walk3.LOScript", "res://GNSS_Stylus_Scripts/OutOfSight30kmUp.LOScript"],
-#	["Lidar calibration", 3950000, 4070000, "res://GNSS_Stylus_Scripts/Calib.LOScript", 816450 + 4380000 - 4362000, "res://GNSS_Stylus_Scripts/VideoTrack3.LOScript", "res://GNSS_Stylus_Scripts/OutOfSight30kmUp.LOScript"],
+	["Lidar calibration", 3950000, 4070000, "res://GNSS_Stylus_Scripts/Calib.LOScript", 0, "res://GNSS_Stylus_Scripts/Walk3.LOScript", "res://GNSS_Stylus_Scripts/OutOfSight3kmUp.LOScript"],
+#	["Lidar calibration", 3950000, 4070000, "res://GNSS_Stylus_Scripts/Calib.LOScript", 816450 + 4380000 - 4362000, "res://GNSS_Stylus_Scripts/VideoTrack3.LOScript", "res://GNSS_Stylus_Scripts/OutOfSight3kmUp.LOScript"],
 
 	#Camera calibration:
-	["Camera calibration", 461128, 581238, "res://GNSS_Stylus_Scripts/OutOfSight30kmUp.LOScript", 461128, "res://GNSS_Stylus_Scripts/CamCalib.LOScript", "res://GNSS_Stylus_Scripts/OutOfSight30kmUp.LOScript"],
+	["Camera calibration", 461128, 581238, "res://GNSS_Stylus_Scripts/OutOfSight3kmUp.LOScript", 461128, "res://GNSS_Stylus_Scripts/CamCalib.LOScript", "res://GNSS_Stylus_Scripts/OutOfSight3kmUp.LOScript"],
 ]
 
 # Lidarscripts that can be loaded.
@@ -316,6 +319,7 @@ func camSwitch(uptime):
 		newCamera = get_node("LOSolver_CameraEye/RigCamera")
 		camera_InterpolationTime = camera_InterpolationTime_Slow
 	if Input.is_action_just_pressed("camera_lidarrig_down"):
+		# This camera doesn't have a separate LOScript
 		newCamera = get_node("LOSolver_VanScanner/LidarAndCameraRig/Camera/CameraBody/RigCamera")
 		camera_InterpolationTime = camera_InterpolationTime_Slow
 	if Input.is_action_just_pressed("camera_first_person_car"):
